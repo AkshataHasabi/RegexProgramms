@@ -10,7 +10,7 @@ public class UserRegistration {
         System.out.println("welcome to regex programms");
         boolean condition = true;
         while (condition) {
-            System.out.println("choose option:" + "\n" + "1.CheckFirstName" + "\n" + "2.CheckLastName" + "\n" + "3.Exit");
+            System.out.println("choose option:" + "\n" + "1.CheckFirstName" + "\n" + "2.CheckLastName" + "\n"+"3.CheckEmail"+"\n" + "4.Exit");
             int option = scanner.nextInt();
             switch (option) {
                 case 1:
@@ -22,12 +22,21 @@ public class UserRegistration {
                     userRegistration.validLastName(scanner.next());
                     break;
                 case 3:
+                    System.out.println("Enter a email:");
+                    userRegistration.validEmail(scanner.next());
+                    break;
+                case 4:
                     condition=false;
                     break;
                 default:
                     System.out.println("invalid option");
             }
         }
+    }
+
+    public void validEmail(String email) {
+        boolean value = Pattern.matches("^[a-zA-Z]+[-\\+\\_\\.a-zA-Z0-9]+[@][a-zA-Z0-9]+([.]?[a-zA-Z\\,]{2,3}){2,3}", email);
+        System.out.println("LastName is valid or not:"+" "+ value);
     }
 
     public void validLastName(String lastName) {
