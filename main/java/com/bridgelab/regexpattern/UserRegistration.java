@@ -33,7 +33,7 @@ public class UserRegistration {
                     break;
                 case 5:
                     System.out.println("Enter a password");
-                    userRegistration.validPasswordFormat(scanner.nextLine());
+                    userRegistration.validPasswordFormat(scanner.next());
                     break;
                 case 6:
                     condition=false;
@@ -45,7 +45,7 @@ public class UserRegistration {
     }
 
     public void validPasswordFormat(String password) {
-        boolean value = Pattern.matches(".{8,}",password);
+        boolean value = Pattern.matches("(.{8,}[A-Z]?)",password);
         System.out.println(value);
         if(value){
             System.out.println("valid password format");
