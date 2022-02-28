@@ -10,7 +10,8 @@ public class UserRegistration {
         System.out.println("welcome to regex programms");
         boolean condition = true;
         while (condition) {
-            System.out.println("choose option:" + "\n" + "1.CheckFirstName" + "\n" + "2.CheckLastName" + "\n"+"3.CheckEmail"+"\n"+"4.CheckMobileFormat"+"\n"+ "5.Exit");
+            System.out.println("choose option:" + "\n" + "1.CheckFirstName" + "\n" + "2.CheckLastName" + "\n"+"3.CheckEmail"+"\n"+
+                                "4.CheckMobileFormat"+"\n"+"5.CheckPassword"+"\n"+ "6.Exit");
             int option = scanner.nextInt();
             switch (option) {
                 case 1:
@@ -26,10 +27,15 @@ public class UserRegistration {
                     userRegistration.validEmail(scanner.next());
                     break;
                 case 4:
-                    System.out.println("Enter a Mobile Number");
-                    userRegistration.validMobileNumber(scanner.next());
+                    System.out.print("Enter a Mobile Number");
+                    System.out.println(scanner.nextLine());
+                    userRegistration.validMobileNumber(scanner.nextLine());
                     break;
                 case 5:
+                    System.out.println("Enter a password");
+                    userRegistration.validPasswordFormat(scanner.nextLine());
+                    break;
+                case 6:
                     condition=false;
                     break;
                 default:
@@ -38,8 +44,18 @@ public class UserRegistration {
         }
     }
 
+    public void validPasswordFormat(String password) {
+        boolean value = Pattern.matches(".{8,}",password);
+        System.out.println(value);
+        if(value){
+            System.out.println("valid password format");
+        }else{
+            System.out.println("Invalid password format");
+        }
+    }
+
     public void validMobileNumber(String mobileNumber) {
-        boolean value = Pattern.matches("^(\\(?(\\+)?\\d{2}\\)?[-]?)?\\d{10}$", mobileNumber);
+        boolean value = Pattern.matches("^\\+[0-9]{2}[ ][1-9][0-9]{9}$", mobileNumber);
         System.out.println(value);
         if(value){
             System.out.println("valid mobile format");
