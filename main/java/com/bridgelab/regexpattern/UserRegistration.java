@@ -10,7 +10,7 @@ public class UserRegistration {
         System.out.println("welcome to regex programms");
         boolean condition = true;
         while (condition) {
-            System.out.println("choose option:" + "\n" + "1.CheckFirstName" + "\n" + "2.CheckLastName" + "\n"+"3.CheckEmail"+"\n" + "4.Exit");
+            System.out.println("choose option:" + "\n" + "1.CheckFirstName" + "\n" + "2.CheckLastName" + "\n"+"3.CheckEmail"+"\n"+"4.CheckMobileFormat"+"\n"+ "5.Exit");
             int option = scanner.nextInt();
             switch (option) {
                 case 1:
@@ -26,11 +26,25 @@ public class UserRegistration {
                     userRegistration.validEmail(scanner.next());
                     break;
                 case 4:
+                    System.out.println("Enter a Mobile Number");
+                    userRegistration.validMobileNumber(scanner.next());
+                    break;
+                case 5:
                     condition=false;
                     break;
                 default:
                     System.out.println("invalid option");
             }
+        }
+    }
+
+    public void validMobileNumber(String mobileNumber) {
+        boolean value = Pattern.matches("^(\\(?(\\+)?\\d{2}\\)?[-]?)?\\d{10}$", mobileNumber);
+        System.out.println(value);
+        if(value){
+            System.out.println("valid mobile format");
+        }else{
+            System.out.println("Invalid mobile format");
         }
     }
 
