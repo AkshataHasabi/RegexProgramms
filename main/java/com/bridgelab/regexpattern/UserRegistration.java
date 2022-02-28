@@ -45,7 +45,7 @@ public class UserRegistration {
     }
 
     public void validPasswordFormat(String password) {
-        boolean value = Pattern.matches("(.{8,}[A-Z0-9]?)",password);
+        boolean value = Pattern.matches("(.{8,}[A-Z0-9]?[+.$#@!&%*]?)",password);
         System.out.println(value);
         if(value){
             System.out.println("valid password format");
